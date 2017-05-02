@@ -70,7 +70,7 @@ public final class Cliente extends JFrame implements ActionListener {
         
         String SetUserName = JOptionPane.showInputDialog(null,"Please enter your name :", "Kstark Chat Application",
              JOptionPane.PLAIN_MESSAGE);
-        String servername = "localhost";  
+        String servername = "192.168.1.82";  
         try {
             new Cliente( SetUserName ,servername);
         } catch(Exception ex) {

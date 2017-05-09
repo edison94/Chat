@@ -78,7 +78,7 @@ public final class Cliente extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Introduce un nombre de usuario");
             }
         } catch (Exception ex) {
-            out.println("Error: " + ex.getMessage());
+            out.println("Error:" + ex.getMessage());
         }
 
     }

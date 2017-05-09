@@ -29,7 +29,7 @@ public final class Cliente extends JFrame implements ActionListener {
     }
 
     public void buildInterface() {
-        send = new JButton("Send");
+        send = new JButton("Enviar");
         clean = new JButton("Limpiar");
         chatmsg = new JTextArea();
         chatmsg.setRows(30);
@@ -45,7 +45,7 @@ public final class Cliente extends JFrame implements ActionListener {
         bp.add(send);
         bp.add(clean);
         bp.setBackground(Color.LIGHT_GRAY);
-        bp.setName("Kstark Chat Application Using Socket");
+        bp.setName("Luis Edison & Iago");
         add(bp, "North");
         send.addActionListener(this);
         clean.addActionListener(this);
@@ -66,7 +66,7 @@ public final class Cliente extends JFrame implements ActionListener {
     }
 
     public static void main(String... args) {
-        String SetUserName = JOptionPane.showInputDialog(null, "Please enter your name :", "Kstark Chat Application",
+        String SetUserName = JOptionPane.showInputDialog(null, "Introduce el nombre de usuario:", "Luis Edison & Iago",
                 JOptionPane.PLAIN_MESSAGE);
         String servername = "192.168.1.100";
         try {

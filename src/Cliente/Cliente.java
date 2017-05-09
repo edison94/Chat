@@ -70,7 +70,11 @@ public final class Cliente extends JFrame implements ActionListener {
                 JOptionPane.PLAIN_MESSAGE);
         String servername = "192.168.1.100";
         try {
-            new Cliente(SetUserName, servername);
+            if (null!= SetUserName) {
+               new Cliente(SetUserName, servername);
+            }else{
+                JOptionPane.showMessageDialog(null, "Introduce un nombre de usuario");
+            }
         } catch (Exception ex) {
             out.println("Error:" + ex.getMessage());
         }

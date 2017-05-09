@@ -60,6 +60,7 @@ public final class Cliente extends JFrame implements ActionListener {
             chatmsg.setText("");
         } else {
             pw.println(chatip.getText());
+            chatmsg.append(username+": "+chatip.getText()+"\n");
             chatip.setText(null);
         }
     }

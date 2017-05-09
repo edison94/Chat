@@ -21,6 +21,7 @@ public class Servidor {
             Socket client = server.accept();
             Manageuser c = new Manageuser(client);
             clients.add(c);
+            c.sendMessage(c.getchatusers(), " se ha unido al chat.");
         }
     }
 

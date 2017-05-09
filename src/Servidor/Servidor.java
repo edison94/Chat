@@ -9,8 +9,8 @@ public class Servidor {
 
     public static void main(String... args) throws Exception {
         new Servidor().createserver();
-    } 
-    
+    }
+
     Vector<String> users = new Vector<String>();
     Vector<Manageuser> clients = new Vector<Manageuser>();
 
@@ -24,10 +24,7 @@ public class Servidor {
         }
     }
 
-    
-
     public void sendtoall(String user, String message) {
-
         for (Manageuser c : clients) {
             if (!c.getchatusers().equals(user)) {
                 c.sendMessage(user, message);
@@ -47,7 +44,7 @@ public class Servidor {
             output = new PrintWriter(client.getOutputStream(), true);
 
             gotuser = input.readLine();
-            users.add(gotuser); 
+            users.add(gotuser);
             start();
         }
 
@@ -70,12 +67,11 @@ public class Servidor {
                         users.remove(gotuser);
                         break;
                     }
-                    sendtoall(gotuser, line); 
+                    sendtoall(gotuser, line);
                 }
-            } 
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
-        } 
-    } 
-} 
+        }
+    }
+}

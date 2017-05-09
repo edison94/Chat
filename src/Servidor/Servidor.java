@@ -16,7 +16,7 @@ public class Servidor {
 
     public void createserver() throws Exception {
         ServerSocket server = new ServerSocket(1555, 10);
-        out.println("Now Server Is Running");
+        out.println("El servidor esta arrancado");
         while (true) {
             Socket client = server.accept();
             Manageuser c = new Manageuser(client);
@@ -49,7 +49,7 @@ public class Servidor {
         }
 
         public void sendMessage(String chatuser, String chatmsg) {
-            output.println(chatuser + " Says:" + chatmsg);
+            output.println(chatuser + ": " + chatmsg);
         }
 
         public String getchatusers() {

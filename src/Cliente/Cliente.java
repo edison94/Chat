@@ -14,7 +14,7 @@ public final class Cliente extends JFrame implements ActionListener {
     BufferedReader br;
     JTextArea chatmsg;
     JTextField chatip;
-    JButton send, exit;
+    JButton send, clean;
     Socket chatusers;
 
     public Cliente(String uname, String servername) throws Exception {
@@ -30,7 +30,7 @@ public final class Cliente extends JFrame implements ActionListener {
 
     public void buildInterface() {
         send = new JButton("Send");
-        exit = new JButton("Exit");
+        clean = new JButton("Limpiar");
         chatmsg = new JTextArea();
         chatmsg.setRows(30);
         chatmsg.setColumns(50);
@@ -43,12 +43,12 @@ public final class Cliente extends JFrame implements ActionListener {
         bp.add(chatip);
 
         bp.add(send);
-        bp.add(exit);
+        bp.add(clean);
         bp.setBackground(Color.LIGHT_GRAY);
         bp.setName("Kstark Chat Application Using Socket");
         add(bp, "North");
         send.addActionListener(this);
-        exit.addActionListener(this);
+        clean.addActionListener(this);
         setSize(500, 300);
         setVisible(true);
         pack();
@@ -56,11 +56,9 @@ public final class Cliente extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent evt) {
-        if (evt.getSource() == exit) {
-            pw.println("end");
-            System.exit(0);
+        if (evt.getSource() == clean) {
+            chatmsg.setText("");
         } else {
-
             pw.println(chatip.getText());
             chatip.setText(null);
         }

@@ -59,9 +59,11 @@ public final class Cliente extends JFrame implements ActionListener {
         if (evt.getSource() == clean) {
             chatmsg.setText("");
         } else {
-            pw.println(chatip.getText());
-            chatmsg.append(username+": "+chatip.getText()+"\n");
-            chatip.setText(null);
+            if(!chatip.getText().equals("")){
+                pw.println(chatip.getText());
+                chatmsg.append(username+": "+chatip.getText()+"\n");
+                chatip.setText(null);
+            }
         }
     }
 
@@ -76,7 +78,7 @@ public final class Cliente extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Introduce un nombre de usuario");
             }
         } catch (Exception ex) {
-            out.println("Error:" + ex.getMessage());
+            out.println("Error: " + ex.getMessage());
         }
 
     }

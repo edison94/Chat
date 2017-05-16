@@ -11,8 +11,8 @@ public class Servidor {
         new Servidor().createserver();
     }
 
-    Vector<String> users = new Vector<String>();
-    Vector<Manageuser> clients = new Vector<Manageuser>();
+    ArrayList<String> users = new ArrayList<>();
+    ArrayList<Manageuser> clients = new ArrayList<>();
 
     public void createserver() throws Exception {
         ServerSocket server = new ServerSocket(1555, 10);

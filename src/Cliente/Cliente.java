@@ -25,6 +25,7 @@ public final class Cliente extends JFrame implements ActionListener {
         pw = new PrintWriter(chatusers.getOutputStream(), true);
         pw.println(uname);
         buildInterface();
+        leerFichero();
         new MessagesThread().start();
     }
 
@@ -58,10 +59,13 @@ public final class Cliente extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent evt) {
         if (evt.getSource() == clean) {
             chatmsg.setText("");
+            File f = new File("copia.txt");
+            f.delete();
         } else {
             if(!chatip.getText().equals("")){
                 pw.println(chatip.getText());
                 chatmsg.append(username+": "+chatip.getText()+"\n");
+                escribirFichero(chatip.getText());
                 chatip.setText(null);
             }
         }
@@ -70,7 +74,7 @@ public final class Cliente extends JFrame implements ActionListener {
     public static void main(String... args) {
         String SetUserName = JOptionPane.showInputDialog(null, "Introduce el nombre de usuario:", "Luis Edison & Iago",
                 JOptionPane.PLAIN_MESSAGE);
-        String servername = "192.168.1.100";
+        String servername = "192.168.1.90";
         try {
             if (null!= SetUserName) {
                new Cliente(SetUserName, servername);
@@ -83,6 +87,45 @@ public final class Cliente extends JFrame implements ActionListener {
 
     }
 
+    private void escribirFichero(String msg){
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        try
+        {
+            fichero = new FileWriter("copia.txt",true);
+            pw = new PrintWriter(fichero);
+            pw.println(msg+"\n");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           try {
+           if (null != fichero)
+              fichero.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }
+    }
+    private void leerFichero() {
+        try{
+            File f1 = new File("copia.txt");
+            if (f1.exists()){
+                String cadena;
+                FileReader f = new FileReader(f1);
+                BufferedReader b = new BufferedReader(f);
+                while((cadena = b.readLine())!=null) {
+                    chatmsg.append(cadena + "\n");
+                }
+                b.close();
+            }else{
+                f1.createNewFile();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
     class MessagesThread extends Thread {
 
         @Override
@@ -92,6 +135,7 @@ public final class Cliente extends JFrame implements ActionListener {
                 while (true) {
                     line = br.readLine();
                     chatmsg.append(line + "\n");
+                    escribirFichero(line);
                 }
             } catch (Exception ex) {
             }

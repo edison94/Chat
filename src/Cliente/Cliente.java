@@ -65,7 +65,7 @@ public final class Cliente extends JFrame implements ActionListener {
             if(!chatip.getText().equals("")){
                 pw.println(chatip.getText());
                 chatmsg.append(username+": "+chatip.getText()+"\n");
-                escribirFichero(chatip.getText());
+                escribirFichero(username+": "+chatip.getText());
                 chatip.setText(null);
             }
         }
@@ -74,7 +74,7 @@ public final class Cliente extends JFrame implements ActionListener {
     public static void main(String... args) {
         String SetUserName = JOptionPane.showInputDialog(null, "Introduce el nombre de usuario:", "Luis Edison & Iago",
                 JOptionPane.PLAIN_MESSAGE);
-        String servername = "192.168.1.90";
+        String servername = "192.168.0.109";
         try {
             if (null!= SetUserName) {
                new Cliente(SetUserName, servername);
@@ -94,7 +94,7 @@ public final class Cliente extends JFrame implements ActionListener {
         {
             fichero = new FileWriter("copia.txt",true);
             pw = new PrintWriter(fichero);
-            pw.println(msg+"\n");
+            pw.println(msg);
 
         } catch (Exception e) {
             e.printStackTrace();
